@@ -1,7 +1,7 @@
 <template>
     <Levioso :floatFactor="2" :range="[-0.5, 0.5]">
         <suspense>
-            <primitive :object="model" :scale="props.args.scale" :position="props.args.position" cast-shadow />
+            <primitive :object="nodes.cloud_A_01" :scale="props.args.scale" :position="props.args.position" cast-shadow />
         </suspense>
     </Levioso>
 
@@ -10,7 +10,7 @@
 
 <script lang="ts" setup>
 const props = defineProps(["args"])
-const model = await useFBX('/islandAssets/models/cloud.fbx')
+const { nodes } = await useGLTF('/islandAssets/models/cloud.glb', { draco: true });
 </script>
 
 <style scoped></style>
