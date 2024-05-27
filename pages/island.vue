@@ -9,7 +9,7 @@
             <StatsGl />
             <GlobalAudio :loop="true" playTrigger="islandGameDialogBtn" :src="bgMusic"  />
             <TresPerspectiveCamera :position="[60, 20, 0]" />
-            <OrbitControls ref="orbit" />
+            <OrbitControls ref="orbit" damping/>
             <Suspense>
                 <IslandBase ref="islandRef" v-model:capybaraAmount="capybaraAmount"
                     v-model:capybarasCatched="capybarasCatched" />
