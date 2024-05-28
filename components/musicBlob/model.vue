@@ -176,8 +176,8 @@ float pnoise(vec3 P, vec3 rep)
 uniform float u_frequency;
 
  void main() {
-    float noise = 2.0 * pnoise(position + u_time, vec3(10.0));
-    float displacement = (u_frequency / 30.0) * (noise / 10.0);
+    float noise = 25.0 * pnoise(position + u_time, vec3(10.0));
+    float displacement = (u_frequency / 10.0) * (noise / 10.0);
     vec3 newPosition = position + normal * displacement;
     gl_Position = projectionMatrix * modelViewMatrix * vec4(newPosition, 1.0);
  }
