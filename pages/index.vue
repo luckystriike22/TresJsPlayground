@@ -51,9 +51,11 @@ onLoop(() => {
 
 onMounted(() => {
     window.addEventListener('mousemove', onMouseMove);
+window.addEventListener('touchmove', onMouseMove);
 })
 onUnmounted(() => {
     window.removeEventListener('mousemove', onMouseMove);
+window.removeEventListener('touchmove', onMouseMove);
 })
 
 const changerControls = useControls('positioner', {
