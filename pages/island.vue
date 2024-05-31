@@ -1,5 +1,5 @@
 <template>
-    <!-- <TresLeches /> -->
+    <TresLeches />
     <div class="d-flex flex-row">
         <h3 class="text-center uiText my-2">Found capybara's: {{ capybarasCatched }} / {{ capybaraAmount }}</h3>
     </div>
@@ -7,14 +7,15 @@
     <CanvasContainer id="canvasContainer">
         <TresCanvas :clear-color="'gray'" preset="realistic" ref="sphereRef"  shadows>
             <StatsGl />
-            <GlobalAudio :loop="true" playTrigger="islandGameDialogBtn" :src="bgMusic"  />
+            <!-- <GlobalAudio :loop="true" playTrigger="islandGameDialogBtn" :src="bgMusic"  /> -->
             <TresPerspectiveCamera :position="[60, 20, 0]" />
-            <OrbitControls ref="orbit" damping/>
+            <OrbitControls ref="orbit" damping make-default />
             <Suspense>
                 <IslandBase ref="islandRef" v-model:capybaraAmount="capybaraAmount"
                     v-model:capybarasCatched="capybarasCatched" />
             </Suspense>
-            <TresDirectionalLight ref="TresDirectionalLightRef" :position="[100, 80, 100]" :intensity="0.4"
+            <TresDirectionalLight ref="TresDirectionalLightRef" 
+            :position="[45, 33.3, 52]" :intensity="0.4"
                 cast-shadow />
             <TresPointLight :position="[1, 50, 1]" :intensity="700" :color="'#FFCB8E'" cast-shadow />
             <TresDirectionalLightHelper v-if="TresDirectionalLightRef" :args="[TresDirectionalLightRef, 10]" />
@@ -23,6 +24,7 @@
                 <TresBoxGeometry :args="[1, 1, 1]" />
                 <TresMeshNormalMaterial />
             </TresMesh>
+           
         </TresCanvas>
     </CanvasContainer>
     <v-dialog attach="#canvasContainer" v-model="showInfoDialog" width="auto" persistent>
@@ -44,9 +46,9 @@ const TresDirectionalLightRef = ref();
 const bgMusic = ref("/islandAssets/Capy_bg_music.mp3");
 const capybaraAmount = ref(0);
 const capybarasCatched = ref(0);
-const showPositioner = ref(false);
+const showPositioner = ref(true);
 const showInfoDialog = ref(true);
-const musicBtnRef = ref();
+const boxRef = shallowRef();
 const dialogInfo = ref({
     title: "Hey can you help me?",
     text: "Oh no, my capybaras have escaped! They've spread all over the island, hiding and playing like little furry adventurers. Can you help me track them down? Click on those sneaky critters to send them back home!",
@@ -58,11 +60,13 @@ const dialogInfo = ref({
 const islandRef = ref();
 const PointLightControls = useControls('positioner', {
     hideBox: false,
-    position: new Vector3(-4, 1.3, 41)
+    position: new Vector3(-4, 1.3, 41),
+    rotation: new Vector3(-4, 1.3, 41),
 })
 
 const pointLight = reactive({
     position: PointLightControls.positionerPosition.value.value,
+    rotation: PointLightControls.positionerRotation.value.value,
     hideBox: PointLightControls.positionerHideBox.value.value,
 });
 

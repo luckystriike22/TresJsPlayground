@@ -13,6 +13,7 @@ const scale = ref(0.05);
 const capyRef = ref();
 const position = ref();
 const randomZ = (Math.random() * (0.7 - -0.7) + -0.7);
+const found = ref(false)
 position.value = new Vector3(props.position.x, props.position.y, props.position.z + randomZ)
 
 const rotation = computed(() => {
@@ -21,10 +22,12 @@ const rotation = computed(() => {
 })
 
 function clicked() {
+    if(found.value) return;
+    
     scale.value = 0.1;
     capybarasCatched.value = capybarasCatched.value! + 1;
-    
-    position.value = new Vector3((Math.random() * (-3 - -10) + -10), 0.78, (Math.random() * (46 - 41) + 41))
+    found.value = true;
+    position.value = new Vector3((Math.random() * (-23 - -15) + -15), -0.2, (Math.random() * (43 - 41) + 41))
 }
 </script>
 
