@@ -8,8 +8,7 @@ const textures = {
     grass: await useTexture({ map: '/islandAssets/grass.jpg' }),
     sand: await useTexture({ map: '/islandAssets/sand.jpg' }),
     stone: await useTexture({ map: '/islandAssets/stone.png' }),
-    dirt2: await useTexture({ map: '/islandAssets/dirt2.jpg' }),
-    water: await useTexture({ map: '/islandAssets/water.jpg', roughnessMap: '/islandAssets/water.jpg', metalnessMap: '/islandAssets/water.jpg' }),
+    dirt2: await useTexture({ map: '/islandAssets/dirt2.jpg' })
 }
 
 const context = useTresContext();

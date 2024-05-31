@@ -28,7 +28,7 @@ export default class IslandGenerator {
     this.textures = textures;
   }
 
-  GetIslandHexagons(islandSizeFactor:number): HexagonIsland {
+  GetIslandHexagons(islandSizeFactor: number): HexagonIsland {
     const amount = 15 * islandSizeFactor;
     const powYNumber = 1.5;
     const MAX_HEIGHT = 10;

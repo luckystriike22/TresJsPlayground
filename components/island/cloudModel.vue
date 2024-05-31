@@ -4,8 +4,6 @@
             <primitive :object="nodes.cloud_A_01" :scale="props.args.scale" :position="props.args.position" cast-shadow />
         </suspense>
     </Levioso>
-
-
 </template>
 
 <script lang="ts" setup>
