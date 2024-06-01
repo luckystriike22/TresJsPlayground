@@ -7,7 +7,7 @@
         <TresCanvas :clear-color="'gray'" ref="canvasRef" shadows>
             <TresAmbientLight :intensity="1" />
             <OrbitControls :enableRotate="false"/>
-            <TresPerspectiveCamera :position="[0, 0, 5]" :rotation="[12, 6, 0]" ref="cameraRef" />
+            <TresPerspectiveCamera :position="[cameraPosition.x, cameraPosition.y, cameraPosition.z]" :rotation="[12, 6, 0]" ref="cameraRef" />
             <plane :rotation="[0, 0, 0]" :position="[-0.2, 0, 0]" scale="30" receive-shadow cast-shadow>
                 <TresMeshToonMaterial color="#82DBC5" />
             </plane>
@@ -33,7 +33,8 @@ const canvasRef = ref();
 const cameraRef = ref();
 const color = ref("#62FFB4");
 const text = shallowRef("Hello World");
-const lightPosition = ref(new Vector3(1, 1, 1))
+const lightPosition = ref(new Vector3(1, 1, 1));
+const cameraPosition = ref(new Vector3(0, 0, 5))
 const mouse = ref(new Vector2(0, 0));
 const newPos = ref(new Vector3(0, 0, 0))
 
@@ -64,6 +65,9 @@ onMounted(() => {
     window.addEventListener('mousemove', onMouseMove);
  else
     window.addEventListener('touchmove', mobileoOnMouseMove , { passive: false });
+
+ if(mobile.value)
+   cameraPosition.value = new Vector3(0, 0, 10);
 })
 onUnmounted(() => {
   window.removeEventListener('mousemove', onMouseMove);
