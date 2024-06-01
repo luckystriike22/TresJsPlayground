@@ -51,7 +51,7 @@ onLoop(() => {
 
 onMounted(() => {
     window.addEventListener('mousemove', onMouseMove);
-window.addEventListener('touchmove', onMouseMove);
+window.addEventListener('touchmove', onMouseMove , { passive: false });
 })
 onUnmounted(() => {
     window.removeEventListener('mousemove', onMouseMove);
