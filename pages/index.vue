@@ -67,7 +67,7 @@ onMounted(() => {
     window.addEventListener('touchmove', mobileoOnMouseMove , { passive: false });
 
  if(mobile.value)
-   cameraPosition.value = new Vector3(0, 0, 10);
+   cameraPosition.value = new Vector3(-2, 0, 10);
 })
 onUnmounted(() => {
   window.removeEventListener('mousemove', onMouseMove);
