@@ -49,7 +49,7 @@ function mobileoOnMouseMove(event: any) {
     const touch = event.touches[0];
     mouse.value.x = (touch.clientX / window.innerWidth) * 2 - 1;
     mouse.value.y = - (touch.clientY / window.innerHeight) * 2 + 1;
-    newPos.value = new Vector3(mouse.value.x, mouse.value.y, 0);
+    newPos.value = new Vector3(mouse.value.x, mouse.value.y * 2, 0);
 };
 
 const { onLoop } = useRenderLoop()
