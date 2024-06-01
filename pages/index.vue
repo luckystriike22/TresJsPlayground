@@ -39,7 +39,7 @@ const newPos = ref(new Vector3(0, 0, 0))
 
 function onMouseMove(event: any) {
     event.preventDefault();
-    mouse.value.x = (event.clientX / window.innerWidth) * 3 - 1;
+    mouse.value.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.value.y = - (event.clientY / window.innerHeight) * 2 + 1;
     newPos.value = new Vector3(mouse.value.x, mouse.value.y, 0);
 };
@@ -47,7 +47,7 @@ function onMouseMove(event: any) {
 function mobileoOnMouseMove(event: any) {
     event.preventDefault();
     const touch = event.touches[0];
-    mouse.value.x = (touch.clientX / window.innerWidth) * 3 - 1;
+    mouse.value.x = (touch.clientX / window.innerWidth) * 2 - 1;
     mouse.value.y = - (touch.clientY / window.innerHeight) * 2 + 1;
     newPos.value = new Vector3(mouse.value.x, mouse.value.y, 0);
 };
