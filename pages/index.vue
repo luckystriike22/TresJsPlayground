@@ -44,6 +44,14 @@ function onMouseMove(event: any) {
     newPos.value = new Vector3(mouse.value.x, mouse.value.y, 0);
 };
 
+function mobileoOnMouseMove(event: any) {
+    event.preventDefault();
+    const touch = event.touches[0];
+    mouse.value.x = (touch.clientX / window.innerWidth) * 3 - 1;
+    mouse.value.y = - (touch.clientY / window.innerHeight) * 2 + 1;
+    newPos.value = new Vector3(mouse.value.x, mouse.value.y, 0);
+};
+
 const { onLoop } = useRenderLoop()
 
 onLoop(() => {
@@ -55,11 +63,11 @@ onMounted(() => {
  if(!mobile.value)
     window.addEventListener('mousemove', onMouseMove);
  else
-    window.addEventListener('touchmove', onMouseMove , { passive: false });
+    window.addEventListener('touchmove', mobileoOnMouseMove , { passive: false });
 })
 onUnmounted(() => {
   window.removeEventListener('mousemove', onMouseMove);
-  window.removeEventListener('touchmove', onMouseMove);
+  window.removeEventListener('touchmove', mobileoOnMouseMove);
 })
 
 const changerControls = useControls('positioner', {
