@@ -26,7 +26,9 @@
 <script lang="ts" setup>
 import { OrbitControls } from "@tresjs/cientos";
 import { Vector2, Vector3 } from "three";
+import { useDisplay } from 'vuetify'
 
+const { mobile } = useDisplay();
 const canvasRef = ref();
 const cameraRef = ref();
 const color = ref("#62FFB4");
@@ -50,12 +52,14 @@ onLoop(() => {
 
 
 onMounted(() => {
+ if(!mobile.value)
     window.addEventListener('mousemove', onMouseMove);
-window.addEventListener('touchmove', onMouseMove , { passive: false });
+ else
+    window.addEventListener('touchmove', onMouseMove , { passive: false });
 })
 onUnmounted(() => {
-    window.removeEventListener('mousemove', onMouseMove);
-window.removeEventListener('touchmove', onMouseMove);
+  window.removeEventListener('mousemove', onMouseMove);
+  window.removeEventListener('touchmove', onMouseMove);
 })
 
 const changerControls = useControls('positioner', {
