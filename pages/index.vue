@@ -28,7 +28,7 @@ import { OrbitControls } from "@tresjs/cientos";
 import { Vector2, Vector3 } from "three";
 import { useDisplay } from 'vuetify'
 
-const { mobile } = useDisplay();
+const { platform } = useDisplay();
 const canvasRef = ref();
 const cameraRef = ref();
 const color = ref("#62FFB4");
@@ -61,14 +61,16 @@ onLoop(() => {
 
 
 onMounted(() => {
- if(!mobile.value)
+    console.log(platform.value.touch)
+ if(!platform.value.touch)
     window.addEventListener('mousemove', onMouseMove);
  else
     window.addEventListener('touchmove', mobileoOnMouseMove , { passive: false });
 
- if(mobile.value)
+ if(platform.value.touch)
    cameraPosition.value = new Vector3(-2, 0, 10);
 })
+
 onUnmounted(() => {
   window.removeEventListener('mousemove', onMouseMove);
   window.removeEventListener('touchmove', mobileoOnMouseMove);
