@@ -28,6 +28,7 @@
     "vuetify": "^3.6.8"
   },
   "devDependencies": {
-    "@types/three": "^0.164.0"
+    "@types/three": "^0.164.0",
+    "nuxt-unity-webgl": "^0.0.3"
   }
 }

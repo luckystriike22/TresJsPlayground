@@ -6,5 +6,5 @@ export default defineNuxtConfig({
   build: {
     transpile: ['vuetify'],
   },
-  modules: ['@tresjs/nuxt']
+  modules: ['@tresjs/nuxt', 'nuxt-unity-webgl']
 })
